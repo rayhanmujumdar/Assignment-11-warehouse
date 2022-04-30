@@ -6,6 +6,7 @@ import Header from './Components/Shared/Header/Header';
 function App() {
   return (
     <div className='text-center'>
+      {/* testing route */}
       <Header></Header>
       <Routes>
         <Route path='home' element={<Home></Home>}></Route>
