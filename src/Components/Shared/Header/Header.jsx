@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../../firebase/firebase.init";
 import NavLink from "../NavLink/NavLink";
+import emptyImg from '../../../image/empty-img.jpg'
 import "./Header.css";
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -85,14 +86,9 @@ const Header = () => {
               <Link
                 to="/profile"
                 className="dropdown-toggle flex items-center hidden-arrow"
-                href="#"
-                id="dropdownMenuButton2"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
               >
                 <img
-                  src="https://mdbootstrap.com/img/new/avatars/2.jpg"
+                  src={user?.photoURL || emptyImg}
                   className="rounded-full"
                   style={{ height: "40px", width: "40px" }}
                   alt=""
