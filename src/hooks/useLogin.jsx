@@ -50,7 +50,7 @@ const useLogin = () => {
   },[error])
   return {
     handleSignIn,
-    signInUser: [user,loading,error]
+    signInUser: [user,loading]
   };
 };
 

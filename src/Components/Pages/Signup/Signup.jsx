@@ -4,7 +4,10 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase/firebase.init";
 import useSignup from "../../../hooks/useSignup";
+import useToken from "../../../hooks/useToken";
 import Loading from "../../Shared/Loading/Loading";
+import SocialLogin from '../../Shared/SocialLogin/SocialLogin'
+import useSocialLogin from '../../../hooks/useSocialLogin'
 import "./Signup.css";
 
 const Signup = () => {
@@ -14,11 +17,15 @@ const Signup = () => {
   const [authUser, authLoading] = useAuthState(auth);
   const { handleRegSubmit, error, user } = useSignup();
   const { signUpUser, loading, signUpError } = user;
+  // handle google sign in
+  const {handleGoogleSignIn,googleAuth} = useSocialLogin()
+  const {googleUser,googleLoading} = googleAuth
+  const [token] = useToken(signUpUser || googleUser)
   useEffect(() => {
-    if (authUser) {
+    if (token || authUser) {
       navigate("/");
     }
-  }, [authUser]);
+  }, [token,authUser]);
   useEffect(() => {
     if (signUpUser) {
       toast.success("Successfully login", {
@@ -36,7 +43,7 @@ const Signup = () => {
   if (signUpError) {
     console.log(signUpError);
   }
-  if (loading || authLoading) {
+  if (loading || authLoading || googleLoading) {
     return <Loading></Loading>;
   }
   return (
@@ -193,6 +200,7 @@ const Signup = () => {
             </Link>
           </p>
         </form>
+        <SocialLogin handleGoogleSignIn={handleGoogleSignIn}></SocialLogin>
       </div>
     </div>
   );

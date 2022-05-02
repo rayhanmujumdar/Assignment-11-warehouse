@@ -7,6 +7,7 @@ import Header from './Components/Shared/Header/Header';
 import NotFound from './Components/Shared/NotFound/NotFound';
 import { Toaster } from 'react-hot-toast';
 import PrivateAuth from './Components/Shared/PrivateAuth/PrivateAuth';
+import Footer from './Components/Shared/Footer/Footer';
 function App() {
   return (
     <div className='text-center'>
@@ -22,6 +23,7 @@ function App() {
         <Route path='signup' element={<Signup></Signup>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }

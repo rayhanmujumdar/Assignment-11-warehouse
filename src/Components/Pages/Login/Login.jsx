@@ -1,39 +1,48 @@
 import React, { useEffect, useState } from "react";
-import { useAuthState, useSendPasswordResetEmail } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSendPasswordResetEmail,
+} from "react-firebase-hooks/auth";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase/firebase.init";
 import useLogin from "../../../hooks/useLogin";
+import useSocialLogIn from "../../../hooks/useSocialLogin";
 import useToken from "../../../hooks/useToken";
 import FormModal from "../../Shared/FormModal/FormModal";
 import Loading from "../../Shared/Loading/Loading";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
-  const { handleSignIn,signInUser } = useLogin();
-  const [inUser,inLoading,inError] = signInUser
+  // login user auth
+  const { handleSignIn, signInUser } = useLogin();
+  //social login user auth
+  const { handleGoogleSignIn, googleAuth } = useSocialLogIn();
+  const { googleUser, googleLoading } = googleAuth;
+
+  const [inUser, inLoading] = signInUser;
   const [user, loading] = useAuthState(auth);
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
   const navigate = useNavigate();
   const [modalIsOpen, setIsOpen] = useState(false);
-  const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(
-    auth
-  );
+  // reset password hooks
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth);
   // json web token hooks
-  const [token] = useToken(inUser)
-  console.log(token)
+  const [token] = useToken(inUser || googleUser);
   useEffect(() => {
-    if (user) {
+    if (token || user) {
       navigate(from, { replace: true });
     }
-  }, [user]);
-  useEffect(() =>{
-    if(error){
-      toast.error(error.code,{
-        id: "error"
-      })
+  }, [user,token]);
+  useEffect(() => {
+    if (error) {
+      toast.error(error.code, {
+        id: "error",
+      });
     }
-  },[error] )
+  }, [error]);
   if (loading) {
     return <Loading></Loading>;
   }
@@ -45,18 +54,18 @@ const Login = () => {
     setIsOpen(false);
   }
   const handleForgetPassword = async (e) => {
-    e.preventDefault()
-    const email = e.target.email.value
-    await sendPasswordResetEmail(email)
-    if(!error){
-      toast.success('reset email sent',{
-        id: "success"
-      })
-      setIsOpen(false)
+    e.preventDefault();
+    const email = e.target.email.value;
+    await sendPasswordResetEmail(email);
+    if (!error) {
+      toast.success("reset email sent", {
+        id: "success",
+      });
+      setIsOpen(false);
     }
-  }
-  if(sending){
-    return <Loading></Loading>
+  };
+  if (sending || inLoading || googleLoading) {
+    return <Loading></Loading>;
   }
   return (
     <div>
@@ -176,16 +185,17 @@ const Login = () => {
               Register
             </Link>
           </p>
+          {/* forget password modal */}
+          <FormModal
+            closeModal={closeModal}
+            modalIsOpen={modalIsOpen}
+            handleEmail={handleForgetPassword}
+            text={"Forget password email type"}
+            readonly={false}
+          ></FormModal>
         </form>
+        <SocialLogin handleGoogleSignIn={handleGoogleSignIn}></SocialLogin>
       </div>
-      {/* forget password modal */}
-      <FormModal 
-        closeModal={closeModal} 
-        modalIsOpen={modalIsOpen}
-        handleEmail={handleForgetPassword}
-        text={"Forget password email type"}
-        readonly={false}
-      ></FormModal>
     </div>
   );
 };
