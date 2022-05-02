@@ -6,7 +6,7 @@ import { useUpdateProfile } from "react-firebase-hooks/auth";
 
 const useSignup = () => {
   const [error, setError] = useState(null);
-  const [createUserWithEmailAndPassword, signUpUser, loading, signUpError] =  useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [createUserWithEmailAndPassword, signUpUser, loading, signUpError] =  useCreateUserWithEmailAndPassword(auth)
   const [updateProfile, updating] = useUpdateProfile(auth);
 //   handle submit
   const handleRegSubmit = (e) => {
@@ -47,16 +47,15 @@ const useSignup = () => {
       error = { ...error, email: "❌ Invalid email" };
     }
     // create a register from
-    if (user?.email && user?.password && !signUpUser && user?.name) {
+    const create = user?.email && user?.password && !signUpUser && user?.name
+    if (create) {
        createUserWithEmailAndPassword(user?.email, user?.password)
        .then(() => {
-           updateProfile({ displayName: user?.name });
-           e.target.reset();
+           if(!signUpError){
+            updateProfile({ displayName: user?.name });
+            e.target.reset();
+           }
        })
-    } else if (signUpUser) {
-      toast.error("user already exist", {
-        id: "error",
-      });
     }
     setError(error);
   };

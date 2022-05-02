@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase/firebase.init";
 import useSignup from "../../../hooks/useSignup";
+import Loading from "../../Shared/Loading/Loading";
 import "./Signup.css";
 
 const Signup = () => {
@@ -12,30 +13,35 @@ const Signup = () => {
   const navigate = useNavigate();
   const [authUser, authLoading] = useAuthState(auth);
   const { handleRegSubmit, error, user } = useSignup();
-  const {signUpUser, loading, signUpError } = user;
+  const { signUpUser, loading, signUpError } = user;
   useEffect(() => {
     if (authUser) {
       navigate("/");
     }
   }, [authUser]);
   useEffect(() => {
-    if(signUpUser){
-        toast.success("email verify code sent", {
-            id: "success",
-          });
+    if (signUpUser) {
+      toast.success("Successfully login", {
+        id: "success",
+      });
     }
-  },[signUpUser])
-  console.log(signUpUser)
+  }, [signUpUser]);
+  useEffect(() => {
+    if (signUpError) {
+      toast.error(signUpError.code, {
+        id: "signUpError",
+      });
+    }
+  }, [signUpError]);
   if (signUpError) {
     console.log(signUpError);
   }
   if (loading || authLoading) {
-    return <div>loading....</div>;
+    return <Loading></Loading>;
   }
-  console.log(signUpUser)
   return (
     <div>
-      <div className="register_from py-10 block p-6 rounded-lg shadow-lg mx-auto my-10 md:max-w-lg max-w-md">
+      <div className="input_from py-10 block p-6 rounded-lg shadow-lg mx-auto my-10 md:max-w-lg max-w-md">
         <h1 className="text-3xl text-white mb-5">Please register from</h1>
         <form onSubmit={handleRegSubmit}>
           <div className="grid">
@@ -177,6 +183,15 @@ const Signup = () => {
           >
             Sign up
           </button>
+          <p className="text-white mt-6 text-center">
+            I have already account{" "}
+            <Link
+              to="/login"
+              className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+            >
+              Login
+            </Link>
+          </p>
         </form>
       </div>
     </div>

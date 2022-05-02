@@ -5,7 +5,6 @@ import './NavLink.css'
 const NavLink = ({ children, to, ...props }) => {
   let resolved = useResolvedPath(to);
   let match = useMatch({ path: resolved.pathname, end: true });
-    console.log(children)
   return (
     <div>
       <Link
