@@ -13,7 +13,7 @@ const NavLink = ({ children, to, ...props }) => {
         {...props}
       >
         {children}
-      {match && <div className={`w-full absolute duration-200 h-1 bg-red-600 left-2/4 translate-x-[-50%]`}></div>}
+      {match && <div className={`w-full absolute duration-200 h-1 bg-emerald-500 left-2/4 translate-x-[-50%]`}></div>}
       </Link>
     </div>
   );

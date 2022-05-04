@@ -1,6 +1,5 @@
 import React from "react";
 import Modal from "react-modal";
-Modal.setAppElement();
 const FormModal = ({ handleEmail, user, closeModal, modalIsOpen,readonly,text}) => {
   const customStyles = {
     content: {
@@ -44,6 +43,7 @@ const FormModal = ({ handleEmail, user, closeModal, modalIsOpen,readonly,text}) 
             defaultValue={user?.email}
             readOnly={readonly || false}
             required
+            placeholder="Enter your email"
           />
           <br />
           <div className="flex justify-between">

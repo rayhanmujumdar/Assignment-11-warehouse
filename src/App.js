@@ -9,6 +9,8 @@ import { Toaster } from 'react-hot-toast';
 import PrivateAuth from './Components/Shared/PrivateAuth/PrivateAuth';
 import Footer from './Components/Shared/Footer/Footer';
 import Profile from './Components/Pages/Profile/Profile';
+import Items from './Components/Pages/Items/Items';
+import ManageItems from './Components/Pages/ManageItems/ManageItems';
 function App() {
   return (
     <div className='text-center'>
@@ -21,6 +23,8 @@ function App() {
         <Route path='profile' element={<PrivateAuth>
           <Profile></Profile>
         </PrivateAuth>}></Route>
+        <Route path='items' element={<Items></Items>}></Route>
+        <Route path='manage-items' element={<ManageItems></ManageItems>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<Signup></Signup>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

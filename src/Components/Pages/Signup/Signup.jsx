@@ -74,6 +74,7 @@ const Signup = () => {
                 id="exampleInput123"
                 aria-describedby="emailHelp123"
                 placeholder="First name"
+                required
               />
               <p className="text-left text-red-500 my-1">{error?.name}</p>
             </div>
@@ -98,6 +99,7 @@ const Signup = () => {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleInput125"
               placeholder="Email address"
+              required
             />
             <p className="text-left text-red-500 my-1">{error?.email}</p>
           </div>
@@ -121,6 +123,7 @@ const Signup = () => {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleInput126"
               placeholder="Password"
+              required
             />
             <p className="text-left text-red-500 my-1">{error?.password}</p>
           </div>
@@ -144,6 +147,7 @@ const Signup = () => {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               id="exampleInput126"
               placeholder="confirm password"
+              required
             />
             <p className="text-left text-red-500 my-1">
               {error?.confirmPassword}

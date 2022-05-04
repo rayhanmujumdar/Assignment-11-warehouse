@@ -74,7 +74,7 @@ const Login = () => {
           <div className="form-group mb-6">
             <label
               htmlFor="exampleInputEmail2"
-              className="form-label inline-block mb-2 text-gray-700"
+              className="form-label mb-2 text-white block text-left"
             >
               Email address
             </label>
@@ -105,7 +105,7 @@ const Login = () => {
           <div className="form-group mb-6">
             <label
               htmlFor="exampleInputPassword2"
-              className="form-label inline-block mb-2 text-gray-700"
+              className="form-label mb-2 text-white block text-left"
             >
               Password
             </label>
