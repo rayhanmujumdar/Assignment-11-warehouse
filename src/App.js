@@ -11,6 +11,8 @@ import Footer from './Components/Shared/Footer/Footer';
 import Profile from './Components/Pages/Profile/Profile';
 import Items from './Components/Pages/Items/Items';
 import ManageItems from './Components/Pages/ManageItems/ManageItems';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 function App() {
   return (
     <div className='text-center'>
