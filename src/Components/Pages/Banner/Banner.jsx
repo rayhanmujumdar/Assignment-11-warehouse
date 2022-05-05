@@ -13,7 +13,7 @@ const Banner = () => {
   }
   return (
     <div>
-      <OwlCarousel className="owl-theme" loop={true} items={1} autoplay={true} autoplayTimeout={3000} nav>
+      <OwlCarousel className="owl-theme relative" loop={true} items={1} autoplay={true} autoplayTimeout={8000} nav autoplayHoverPause={true}>
         {bannerItems.map((item) => (
           <div
             key={item._id}
