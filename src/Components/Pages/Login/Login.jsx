@@ -69,7 +69,7 @@ const Login = () => {
   }
   return (
     <div>
-      <div className="input_from text-white block p-6 rounded-lg shadow-lg bg-white md:max-w-lg max-w-md mx-auto py-10 my-10">
+      <div className="input_from text-white block p-6 mx-5 rounded-lg shadow-lg bg-white md:max-w-lg max-w-md md:mx-auto py-10 my-10">
         <form onSubmit={handleSignIn}>
           <div className="form-group mb-6">
             <label

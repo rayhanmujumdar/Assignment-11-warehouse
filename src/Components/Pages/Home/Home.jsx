@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <div>
         <Banner></Banner>
-        <h1 className="text-3xl font-semibold my-3">Inventory <span className="text-[#2C5364]">items</span> {items.slice(0,6).length}</h1>
+        <h1 className="text-3xl font-semibold my-3">Inventory <span className="text-[#2C5364]">items</span></h1>
       <div className="lg:container lg:mx-auto grid lg:grid-cols-3 md:grid-cols-2 gap-4 my-5">
         {items.slice(0,6).map((item) => (
           <Item item={item} key={item._id}></Item>

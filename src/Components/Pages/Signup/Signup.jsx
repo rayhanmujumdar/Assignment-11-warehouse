@@ -48,7 +48,7 @@ const Signup = () => {
   }
   return (
     <div>
-      <div className="input_from py-10 block p-6 rounded-lg shadow-lg mx-auto my-10 md:max-w-lg max-w-md">
+      <div className="input_from py-10 mx-5 block p-6 rounded-lg shadow-lg md:mx-auto my-10 md:max-w-lg max-w-md">
         <h1 className="text-3xl text-white mb-5">Please register from</h1>
         <form onSubmit={handleRegSubmit}>
           <div className="grid">

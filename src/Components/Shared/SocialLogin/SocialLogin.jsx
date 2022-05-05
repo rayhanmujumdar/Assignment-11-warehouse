@@ -9,7 +9,7 @@ const SocialLogin = ({ handleGoogleSignIn }) => {
       </div>
       <button
         onClick={handleGoogleSignIn}
-        className="w-80 border flex justify-center items-center py-2 mx-auto rounded-md"
+        className="md:w-80 w-72 border flex justify-center items-center py-2 mx-auto rounded-md"
       >
         <i className="fa-brands fa-google text-xl text-yellow-500 mr-4"></i>
         <p className="text-xl text-white">Continue with Google</p>

@@ -13,6 +13,7 @@ import Items from './Components/Pages/Items/Items';
 import ManageItems from './Components/Pages/ManageItems/ManageItems';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import Inventory from './Components/Pages/Inventory/Invertory';
 function App() {
   return (
     <div className='text-center'>
@@ -25,8 +26,19 @@ function App() {
         <Route path='profile' element={<PrivateAuth>
           <Profile></Profile>
         </PrivateAuth>}></Route>
-        <Route path='items' element={<Items></Items>}></Route>
-        <Route path='manage-items' element={<ManageItems></ManageItems>}></Route>
+        <Route path='items' element={
+          <PrivateAuth>
+            <Items></Items>
+          </PrivateAuth>
+        }></Route>
+        <Route path='manage-items' element={
+          <PrivateAuth>
+              <ManageItems></ManageItems>
+          </PrivateAuth>}></Route>
+        <Route path='/inventory/:id' element={
+          <PrivateAuth>
+              <Inventory></Inventory>
+          </PrivateAuth>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<Signup></Signup>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

@@ -6,9 +6,11 @@ import auth from "../../../firebase/firebase.init";
 import NavLink from "../NavLink/NavLink";
 import emptyImg from '../../../image/empty-img.jpg'
 import "./Header.css";
+import useNav from "../../../hooks/useNav";
 const Header = () => {
   const [open, setOpen] = useState(false);
   const [user,loading,error] = useAuthState(auth)
+  const [nav,setNav] = useNav()
   const handleNavIcon = (open) => {
     setOpen(open);
   };
@@ -16,8 +18,8 @@ const Header = () => {
     signOut(auth)
   }
   return (
-    <div>
-      <nav className="relative w-full flex flex-wrap items-center justify-between py-3 bg-[#2C5364] text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light">
+    <div className={`${nav ? 'sticky z-10 top-0': 'top-[-80px]'} duration-500`}>
+      <nav className={`relative w-full flex flex-wrap items-center justify-between py-3 bg-[#2C5364] text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light`}>
         <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
           <button
             onClick={() => handleNavIcon(!open)}
@@ -79,7 +81,7 @@ const Header = () => {
             </div>
               <div className="text-xs text-left">
                 <p className="uppercase">free delivery</p>
-                <p className="uppercase">from $ 250</p>
+                <p className="uppercase">from 15000 ৳</p>
               </div>
             </div>
             {user ? <button

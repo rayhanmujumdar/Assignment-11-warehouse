@@ -11,7 +11,7 @@ const Profile = () => {
     return <Loading></Loading>;
   }
   return (
-    <div className="max-w-md h-[40vh] my-10 p-3 bg-slate-400 bg-opacity-50 mx-auto rounded-md">
+    <div className="max-w-md md:h-[40vh] my-10 p-3 bg-slate-400 bg-opacity-50 mx-auto rounded-md">
       <div className="flex justify-center mx-3 md:mt-10">
         <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
           <img
