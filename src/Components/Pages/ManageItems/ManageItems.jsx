@@ -1,27 +1,57 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import axiosPrivate from "../../../api/axiosPrivate";
 import useItems from "../../../hooks/useItems";
 import Loading from "../../Shared/Loading/Loading";
-import './MangeItems.css'
+// import  from '../../Shared/'
+import "./MangeItems.css";
 
 const ManageItems = () => {
   const navigate = useNavigate();
   const [items, setItems, loading] = useItems();
-  const [del,setDel] = useState(false)
   if (loading) {
     return <Loading></Loading>;
   }
-  const handleDeleteItem = () =>{
-    const itemDelete = window.confirm('are you sure')
-    setDel(itemDelete)
-  }
-  if(del){
-    
-  }
+  const handleDeleteItem = async (id,email) => {
+    const itemDelete = window.confirm("are you sure");
+    console.log(email)
+    if (itemDelete && email) {
+        const url = `http://localhost:5000/items?id=${id}`;
+        const {data} = await axiosPrivate.delete(url)
+        if(data.deletedCount){
+          toast.success('item deleted',{
+            id: "success"
+          })
+          const remember = items.filter(item => item._id !== id)
+          setItems(remember)
+        }
+    }
+    else if(!itemDelete){
+      toast.error('cancel',{
+        id: 'error',
+        duration: 2000
+      })
+    }
+    else if(!email){
+      toast.error('This item not delete',{
+        id: 'error',
+        duration: 2000
+      })
+    }
+  };
+
   return (
     <div className="my-5">
-        <h1 className="my-2 text-4xl ">Inventory<span className="text-yellow-600"> Manage</span></h1>
-        <button onClick={() => navigate('/add-item')} className="bg-green-700 text-white px-10 py-2 rounded-md my-3 hover:bg-green-800">Add items</button>
+      <h1 className="my-2 text-4xl ">
+        Inventory<span className="text-yellow-600"> Manage</span>
+      </h1>
+      <button
+        onClick={() => navigate("/add-item")}
+        className="bg-green-700 text-white px-10 py-2 rounded-md my-3 hover:bg-green-800"
+      >
+        Add New Items
+      </button>
       <div className=" flex flex-col">
         <div className="scroll_bar overflow-x-auto">
           <div className="py-2 inline-block md:min-w-xl sm:px-6 lg:px-8">
@@ -102,7 +132,10 @@ const ManageItems = () => {
                           >
                             Update Stock
                           </button>
-                          <button onClick={handleDeleteItem} className="mr-3 bg-red-500 px-3 py-1 rounded-md hover:bg-red-600 text-gray-200">
+                          <button
+                            onClick={() => handleDeleteItem(item?._id,item?.email)}
+                            className="mr-3 bg-red-500 px-3 py-1 rounded-md hover:bg-red-600 text-gray-200"
+                          >
                             Delete
                           </button>
                         </div>

@@ -17,6 +17,7 @@ import Inventory from './Components/Pages/Inventory/Invertory';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import AddItem from './Components/Pages/AddItem/AddItem';
 function App() {
   useEffect(() => {
     AOS.init()
@@ -26,7 +27,7 @@ function App() {
        <Toaster />
       {/* testing route */}
       <Header></Header>
-      <Routes>
+    <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='home' element={<Home></Home>}></Route>
         <Route path='profile' element={<PrivateAuth>
@@ -44,6 +45,10 @@ function App() {
         <Route path='/inventory/:id' element={
           <PrivateAuth>
               <Inventory></Inventory>
+          </PrivateAuth>}></Route>
+        <Route path='/add-item' element={
+          <PrivateAuth>
+              <AddItem></AddItem>
           </PrivateAuth>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<Signup></Signup>}></Route>

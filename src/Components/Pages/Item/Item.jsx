@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import emptyImg from '../../../image/empty-img.jpg'
 
 const Item = ({ item }) => {
   const { _id, img, name, price, description, quantity, supplier } = item;
   const [des, setDes] = useState(false);
   const navigate = useNavigate();
+  console.log(img)
   return (
     <div
       data-aos="fade-up"
@@ -15,20 +17,20 @@ const Item = ({ item }) => {
       className="flex justify-center"
     >
       <div className="rounded-lg shadow-lg bg-[#2C5364] max-w-sm flex flex-col justify-end">
-        <div>
-          <img className="rounded-t-lg py-2" src={img} alt="" />
+        <div className="px-4">
+          <img className="rounded-t-lg py-2" src={img || emptyImg} alt="" />
         </div>
         <div className="p-6 text-left">
           <h5 className="text-gray-200 text-xl font-medium mb-2">{name}</h5>
           <p className="text-gray-300 text-base mb-2">
             {des ? description : description.slice(0, 100)}{" "}
-            <span
+            {description?.length > 100 && <span
               className="font-bold cursor-pointer"
               onClick={() => setDes(!des)}
             >
               {" "}
               {des ? "Less..." : "More..."}
-            </span>
+            </span>}
           </p>
           <p className="text-xl text-gray-300">Supplier: {supplier}</p>
           <p className="text-xl text-gray-300">Price: {price} Taka</p>

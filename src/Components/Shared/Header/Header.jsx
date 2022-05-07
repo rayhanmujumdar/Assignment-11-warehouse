@@ -53,7 +53,7 @@ const Header = () => {
               <span className="text-blue-500 text-2xl">H</span>ouse
             </Link>
             {/* Left links */}
-            <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
+            <ul className="navbar-nav flex flex-col md:mx-auto pl-0 list-style-none mr-auto">
               <li className="nav-item p-2">
                 <NavLink to="home">Home</NavLink>
               </li>
@@ -64,7 +64,7 @@ const Header = () => {
                 <NavLink to="manage-items">Manage items</NavLink>
               </li>
               <li className="nav-item p-2">
-                <NavLink to="add-items">Add item</NavLink>
+                <NavLink to="add-item">Add item</NavLink>
               </li>
               <li className="nav-item p-2">
                 <NavLink to="my-items">My items</NavLink>
