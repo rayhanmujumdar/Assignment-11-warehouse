@@ -73,7 +73,7 @@ const Signup = () => {
           focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 id="exampleInput123"
                 aria-describedby="emailHelp123"
-                placeholder="First name"
+                placeholder="Your name"
                 required
               />
               <p className="text-left text-red-500 my-1">{error?.name}</p>

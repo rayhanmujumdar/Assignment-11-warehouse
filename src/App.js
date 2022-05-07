@@ -14,7 +14,13 @@ import ManageItems from './Components/Pages/ManageItems/ManageItems';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import Inventory from './Components/Pages/Inventory/Invertory';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 function App() {
+  useEffect(() => {
+    AOS.init()
+  },[])
   return (
     <div className='text-center'>
        <Toaster />

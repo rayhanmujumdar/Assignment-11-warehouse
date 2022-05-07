@@ -2,11 +2,11 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="h-screen fixed bg-[#2C5364] top-0 left-0 w-full flex justify-center items-center z-20  bg-opacity-60">
+    <div className="h-screen fixed bg-black top-0 left-0 w-full flex justify-center items-center z-20  bg-opacity-60">
       <div className="flex items-center justify-center">
         <button
           type="button"
-          className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed"
+          className="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-[#2C5364] hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed"
           disabled=""
         >
           <svg

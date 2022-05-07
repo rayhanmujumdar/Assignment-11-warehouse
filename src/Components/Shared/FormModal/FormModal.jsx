@@ -43,7 +43,7 @@ const FormModal = ({ handleEmail, user, closeModal, modalIsOpen,readonly,text}) 
             defaultValue={user?.email}
             readOnly={readonly || false}
             required
-            placeholder="Enter your email"
+            placeholder={"Enter email"}
           />
           <br />
           <div className="flex justify-between">

@@ -67,7 +67,7 @@ const Header = () => {
                 <NavLink to="add-items">Add item</NavLink>
               </li>
               <li className="nav-item p-2">
-                <NavLink to="about">About</NavLink>
+                <NavLink to="my-items">My items</NavLink>
               </li>
             </ul>
             {/* Left links */}
