@@ -29,22 +29,22 @@ const Footer = () => {
             </div>
           </div>
           <div className="text-white py-4">
-            <h1 className="text-xl font-bold text-left uppercase">customer service</h1>
+            <h1 className="text-xl font-bold text-left uppercase">Quick Links</h1>
             <ul className="text-left">
               <li>
-                <Link to="/" className="underline hover:text-blue-500">Contact us</Link>
+                <Link to="home" className="underline hover:text-blue-500">Home</Link>
               </li>
               <li>
-                <Link to="/" className="underline hover:text-blue-500">Help and advice</Link>
+                <Link to="items" className="underline hover:text-blue-500">Items</Link>
               </li>
               <li>
-                <Link to="/" className="underline hover:text-blue-500">Shipping & Returns</Link>
+                <Link to="manage-items" className="underline hover:text-blue-500">Manage Items</Link>
               </li>
               <li>
-                <Link to="/" className="underline hover:text-blue-500">Terms and conditions</Link>
+                <Link to="add-item" className="underline hover:text-blue-500">Add Item</Link>
               </li>
               <li>
-                <Link to="/" className="underline hover:text-blue-500">Refund policy</Link>
+                <Link to="my-items" className="underline hover:text-blue-500">My Items</Link>
               </li>
             </ul>
           </div>
