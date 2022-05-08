@@ -15,6 +15,9 @@ This is my warehouse inventory project.this  project have a warehouse items and 
 
 firebase deploy link [ MyChooseHouse ](https://assignment-11-wirehouse.web.app/).
 
+## my stackoverflow question.
+[link](https://stackoverflow.com/questions/72163614/how-to-this-warning-fixed-react-owl-carousel)
+
 ## git client site link
 github client site link [link](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-rayhanmujumdar)
 
