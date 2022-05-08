@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import noPhoto from '../../../image/noPhoto.jpg'
+import noPhoto from '../../../image/noPhoto.png'
 
 const Item = ({ item }) => {
   const { _id, img, name, price, description, quantity, supplier } = item;
