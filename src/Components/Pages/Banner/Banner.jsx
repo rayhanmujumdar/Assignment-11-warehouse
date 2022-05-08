@@ -18,7 +18,7 @@ const Banner = () => {
         {bannerItems.map((item) => (
           <div
             key={item._id}
-            className="item md:h-screen bg-cover bg-center flex"
+            className="item md:h-screen min-h-screen bg-cover bg-center flex"
             style={{ backgroundImage: `url(${backgroundImage})` }}
           >
             <div className="grid md:grid-cols-2 justify-items-center items-center gap-10 container mx-auto">
