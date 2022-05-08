@@ -12,7 +12,6 @@ const Banner = () => {
     return <Loading></Loading>;
   }
   const navScreen =  window.screen.availWidth < 800
-  console.log(navScreen)
   return (
     <div>
       <OwlCarousel className="owl-theme relative" loop={true} items={1} autoplay={true} autoplayTimeout={6000}  nav={navScreen? false: true} autoplayHoverPause={true}>

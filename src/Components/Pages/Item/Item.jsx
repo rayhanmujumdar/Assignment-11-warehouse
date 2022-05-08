@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import noPhoto from '../../../image/noPhoto.jpg'
 
 const Item = ({ item }) => {
-  console.log(item)
   const { _id, img, name, price, description, quantity, supplier } = item;
   const [des, setDes] = useState(false);
   const navigate = useNavigate();
