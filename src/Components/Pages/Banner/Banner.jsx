@@ -24,7 +24,7 @@ const Banner = () => {
             <div className="grid md:grid-cols-2 justify-items-center items-center gap-10 container mx-auto">
               <div className="md:order-1 order-2 p-4 md:text-left text-center">
                 <h1 className="text-3xl uppercase my-2 text-slate-600 text font-semibold">{item?.name}</h1>
-                <p className="my-3 font-thin text-lg">{item?.description.slice(0,200)}</p>
+                <p className="my-3 font-thin text-lg">{item?.description}</p>
                 <p className="text-xl text-gray-700">Price: {item?.price} Taka</p>
               </div>
               <div 
