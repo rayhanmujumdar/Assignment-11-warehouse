@@ -7,10 +7,11 @@ import NavLink from "../NavLink/NavLink";
 import emptyImg from '../../../image/empty-img.jpg'
 import "./Header.css";
 import useNav from "../../../hooks/useNav";
+import Loading from "../Loading/Loading";
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const [user,loading,error] = useAuthState(auth)
-  const [nav,setNav] = useNav()
+  const [user] = useAuthState(auth)
+  const [nav] = useNav()
   const handleNavIcon = (open) => {
     setOpen(open);
   };

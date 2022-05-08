@@ -18,6 +18,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import AddItem from './Components/Pages/AddItem/AddItem';
+import MyItems from './Components/Pages/MyItems/MyItems';
 function App() {
   useEffect(() => {
     AOS.init()
@@ -49,6 +50,10 @@ function App() {
         <Route path='/add-item' element={
           <PrivateAuth>
               <AddItem></AddItem>
+          </PrivateAuth>}></Route>
+        <Route path='/my-items' element={
+          <PrivateAuth>
+              <MyItems></MyItems>
           </PrivateAuth>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<Signup></Signup>}></Route>

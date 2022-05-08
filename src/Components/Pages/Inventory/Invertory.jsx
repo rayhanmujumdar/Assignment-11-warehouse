@@ -54,7 +54,7 @@ const Inventory = () => {
           </button>
           {!inputOpen && <button
             onClick={() => handleDelivery(_id, quantity)}
-            className="bg-stone-800 text-white px-3 py-2 rounded active:bg-stone-600 hover:bg-stone-700"
+            className="bg-stone-800 text-white px-3 py-2 rounded active:bg-stone-600 hover:bg-stone-700 ml-4"
           >
             Delivery
           </button>}

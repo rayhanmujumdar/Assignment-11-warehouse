@@ -1,6 +1,6 @@
 /* width */
 .scroll_bar::-webkit-scrollbar {
-    width: 20px;
+    height: 10px;
   }
   
   /* Track */

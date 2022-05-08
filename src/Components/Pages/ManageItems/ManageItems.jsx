@@ -4,43 +4,53 @@ import { useNavigate } from "react-router-dom";
 import axiosPrivate from "../../../api/axiosPrivate";
 import useItems from "../../../hooks/useItems";
 import Loading from "../../Shared/Loading/Loading";
-// import  from '../../Shared/'
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../firebase/firebase.init";
 import "./MangeItems.css";
+import { signOut } from "firebase/auth";
 
 const ManageItems = () => {
   const navigate = useNavigate();
   const [items, setItems, loading] = useItems();
+  const [user] = useAuthState(auth);
+  
+  const handleDeleteItem = async (id, email) => {
+    const itemDelete = window.confirm("are you sure");
+    if (itemDelete && email) {
+      const url = `http://localhost:5000/items?id=${id}&email=${user?.email}`;
+      try {
+        const { data } = await axiosPrivate.delete(url);
+        if (data.deletedCount) {
+          toast.success("item deleted", {
+            id: "success",
+          });
+          const remember = items.filter((item) => item._id !== id);
+          setItems(remember);
+        }
+      } catch (error){
+        if(error.response.status === 403 || error.response.status === 401){
+          toast.error('Unauthorize/please login',{
+            id: 'error'
+          })
+          signOut(auth)
+          navigate('/login')
+        }
+      }
+    } else if (!itemDelete) {
+      toast.error("cancel", {
+        id: "error",
+        duration: 2000,
+      });
+    } else if (!email) {
+      toast.error("This item not delete", {
+        id: "error",
+        duration: 2000,
+      });
+    }
+  };
   if (loading) {
     return <Loading></Loading>;
   }
-  const handleDeleteItem = async (id,email) => {
-    const itemDelete = window.confirm("are you sure");
-    console.log(email)
-    if (itemDelete && email) {
-        const url = `http://localhost:5000/items?id=${id}`;
-        const {data} = await axiosPrivate.delete(url)
-        if(data.deletedCount){
-          toast.success('item deleted',{
-            id: "success"
-          })
-          const remember = items.filter(item => item._id !== id)
-          setItems(remember)
-        }
-    }
-    else if(!itemDelete){
-      toast.error('cancel',{
-        id: 'error',
-        duration: 2000
-      })
-    }
-    else if(!email){
-      toast.error('This item not delete',{
-        id: 'error',
-        duration: 2000
-      })
-    }
-  };
-
   return (
     <div className="my-5">
       <h1 className="my-2 text-4xl ">
@@ -133,7 +143,9 @@ const ManageItems = () => {
                             Update Stock
                           </button>
                           <button
-                            onClick={() => handleDeleteItem(item?._id,item?.email)}
+                            onClick={() =>
+                              handleDeleteItem(item?._id, item?.email)
+                            }
                             className="mr-3 bg-red-500 px-3 py-1 rounded-md hover:bg-red-600 text-gray-200"
                           >
                             Delete

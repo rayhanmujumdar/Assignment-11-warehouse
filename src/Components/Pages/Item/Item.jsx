@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import emptyImg from '../../../image/empty-img.jpg'
+import noPhoto from '../../../image/noPhoto.jpg'
 
 const Item = ({ item }) => {
+  console.log(item)
   const { _id, img, name, price, description, quantity, supplier } = item;
   const [des, setDes] = useState(false);
   const navigate = useNavigate();
-  console.log(img)
   return (
     <div
       data-aos="fade-up"
@@ -18,7 +18,7 @@ const Item = ({ item }) => {
     >
       <div className="rounded-lg shadow-lg bg-[#2C5364] max-w-sm flex flex-col justify-end">
         <div className="px-4">
-          <img className="rounded-t-lg py-2" src={img || emptyImg} alt="" />
+          <img className="rounded-t-lg py-2 mx-auto" src={img || noPhoto} alt="" />
         </div>
         <div className="p-6 text-left">
           <h5 className="text-gray-200 text-xl font-medium mb-2">{name}</h5>

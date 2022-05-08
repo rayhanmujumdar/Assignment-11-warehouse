@@ -2,7 +2,7 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="h-screen fixed bg-black top-0 left-0 w-full flex justify-center items-center z-20  bg-opacity-60">
+    <div className="h-screen fixed bg-black top-16 left-0 w-full flex justify-center items-center z-20  bg-opacity-60">
       <div className="flex items-center justify-center">
         <button
           type="button"
