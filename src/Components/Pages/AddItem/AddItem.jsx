@@ -19,7 +19,7 @@ const AddItem = () => {
     if(formRef.current.name.value){
     setAddLoading(true);
     const formData = {...data,quantity: parseInt(data.quantity)}
-    const url = `http://localhost:5000/items?email=${user?.email}`;
+    const url = `https://fathomless-earth-22258.herokuapp.com/items?email=${user?.email}`;
     axiosPrivate
       .put(url, formData)
       .then((res) => {

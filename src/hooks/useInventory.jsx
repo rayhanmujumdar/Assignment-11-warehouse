@@ -8,7 +8,7 @@ const useInventory = (id) => {
   const [dataReload,setDataReLoad] = useState(false)
   const [loading,setLoading] = useState(true)
   useEffect(() => {
-    const url = `http://localhost:5000/items/${id}`;
+    const url = `https://fathomless-earth-22258.herokuapp.com/items/${id}`;
     axios.get(url).then((res) => {
       setItem(res.data);
       setLoading(false)
@@ -20,7 +20,7 @@ const handleQuantity = async (e,setInputOpen) => {
     const inputValue = e.target.quantity.value
     const quantity = item?.quantity + parseInt(inputValue)
     const quantityUpdate = {...item,quantity}
-    const url = `http://localhost:5000/items/${id}`
+    const url = `https://fathomless-earth-22258.herokuapp.com/items/${id}`
     const {data} = await axiosPrivate.put(url,quantityUpdate)
     if(data.modifiedCount){
         toast.success("Product stocked",{
@@ -47,7 +47,7 @@ const handleDelivery = async (id) => {
         })
     }else{
         const deliveryProduct = {...item,quantity}
-        const url = `http://localhost:5000/items/${id}`
+        const url = `https://fathomless-earth-22258.herokuapp.com/items/${id}`
         const {data} = await axiosPrivate.put(url,deliveryProduct)
         if(data.modifiedCount){
             toast.success('Delivered',{

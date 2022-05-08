@@ -5,7 +5,7 @@ const useItems = () => {
     const [items,setItems] = useState([])
     const [loading,setLoading] = useState(true)
     useEffect(() => {
-        const url = 'http://localhost:5000/items'
+        const url = 'https://fathomless-earth-22258.herokuapp.com/items'
         axios.get(url)
         .then(res => {
             setItems(res.data)

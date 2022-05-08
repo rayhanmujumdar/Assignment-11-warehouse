@@ -12,7 +12,7 @@ const MyItems = () => {
     useEffect(() => {
         const getMyItem = async () => {
             if(user){
-                const url = `http://localhost:5000/items?email=${user?.email}`
+                const url = `https://fathomless-earth-22258.herokuapp.com/items?email=${user?.email}`
                 const {data} = await axiosPrivate.get(url)
                 setMyItem(data)
                 setLoading(false)
