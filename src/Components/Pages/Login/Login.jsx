@@ -35,7 +35,7 @@ const Login = () => {
     if (token || user) {
       navigate(from, { replace: true });
     }
-  }, [user,token]);
+  }, [user, token]);
   useEffect(() => {
     if (error) {
       toast.error(error.code, {

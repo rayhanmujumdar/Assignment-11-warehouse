@@ -12,7 +12,7 @@ const MyItems = () => {
     useEffect(() => {
         const getMyItem = async () => {
             if(user){
-                const url = `https://fathomless-earth-22258.herokuapp.com/items?email=${user?.email}`
+                const url = `https://assignment-11-server-side.vercel.app/api/v1/warehouse/items?email=${user?.email}`
                 const {data} = await axiosPrivate.get(url)
                 setMyItem(data)
                 setLoading(false)

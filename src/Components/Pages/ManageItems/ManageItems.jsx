@@ -17,7 +17,7 @@ const ManageItems = () => {
   const handleDeleteItem = async (id, email) => {
     const itemDelete = window.confirm("are you sure");
     if (itemDelete && email) {
-      const url = `https://fathomless-earth-22258.herokuapp.com/items?id=${id}&email=${user?.email}`;
+      const url = `https://assignment-11-server-side.vercel.app/api/v1/warehouse/items?id=${id}&email=${user?.email}`;
       try {
         const { data } = await axiosPrivate.delete(url);
         if (data.deletedCount) {

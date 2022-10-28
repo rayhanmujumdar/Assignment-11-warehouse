@@ -6,7 +6,7 @@ const useToken = (user) => {
     const getToken = async () => {
       const email = user?.user?.email;
       if (email) {
-        const { data } = await axios.post("https://fathomless-earth-22258.herokuapp.com/login", {
+        const { data } = await axios.post("https://assignment-11-server-side.vercel.app/api/v1/warehouse/login", {
           email,
         });
         setToken(data?.accessToken);

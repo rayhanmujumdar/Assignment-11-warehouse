@@ -5,7 +5,7 @@ const useItems = () => {
     const [items,setItems] = useState([])
     const [loading,setLoading] = useState(true)
     useEffect(() => {
-        const url = 'https://fathomless-earth-22258.herokuapp.com/items'
+        const url = 'https://assignment-11-server-side.vercel.app/api/v1/warehouse/items'
         axios.get(url)
         .then(res => {
             setItems(res.data)
